@@ -6,7 +6,6 @@
 package projppo;
 
 /**
- *
  * @author miquel
  */
 public class Alumne extends Persona{
