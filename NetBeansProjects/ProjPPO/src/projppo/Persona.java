@@ -11,7 +11,7 @@ package projppo;
  */
 public class Persona implements Comparable<Persona> {
 
-    private String Nom;
+    String Nom;
 
     public Persona(String Nom) {
         this.Nom = Nom;
@@ -29,7 +29,7 @@ public class Persona implements Comparable<Persona> {
 
     @Override
     public int compareTo(Persona o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
     
 

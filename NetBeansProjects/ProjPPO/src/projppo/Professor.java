@@ -5,6 +5,8 @@
  */
 package projppo;
 
+import java.util.Comparator;
+
 /**
  *
  * @author miquel
@@ -24,6 +26,18 @@ public class Professor extends Persona {
 
     public void setTitulacio(String titulacio) {
         this.titulacio = titulacio;
+    }
+
+    public static Comparator<Professor> COMPARE_BY_NAME = (Professor one, Professor other) -> one.Nom.compareTo(other.Nom);
+//        public static Comparator<Professor> COMPARE_BY_NAME = new Comparator<Professor>() {
+//        public int compare(Professor one, Professor other) {
+//            return one.Nom.compareTo(other.Nom);
+//        }
+//    };
+
+    @Override
+    public String toString() {
+        return "Professor{" + "titulacio=" + titulacio + ", nom: " + getNom() + '}';
     }
 
 }

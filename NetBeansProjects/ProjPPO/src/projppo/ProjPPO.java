@@ -6,6 +6,8 @@
 package projppo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -25,7 +27,8 @@ public class ProjPPO {
         Assignatura as;
         Alumne[] alumnes = new Alumne[100000];
         Alumne[] alAssig;
-        Professor[] professors = new Professor[1000];
+        //Professor[] professors = new Professor[1000];
+        List<Professor> professors = new ArrayList<>();
         Assignatura[] assignatures = new Assignatura[100];
         ArrayList<Integer> auxAlu = new ArrayList<>();
         ArrayList<Integer> auxPro = new ArrayList<>();
@@ -38,9 +41,9 @@ public class ProjPPO {
             al = new Alumne(rn.nextInt(50) + 1980, rn.nextBoolean(), noms[rn.nextInt(22)]);
             alumnes[i] = al;
         }
-        for (int i = 0; i < professors.length; i++) {
+        for (int i = 0; i < 1000; i++) {
             pr = new Professor("titulacio" + i, noms[rn.nextInt(22)]);
-            professors[i] = pr;
+            professors.add(pr);
 
         }
         int p;
@@ -63,16 +66,23 @@ public class ProjPPO {
             }
             auxPro.add(cont);
             System.out.println(cont);
-            as=new Assignatura(rn.nextInt(20)+2000, "assig"+i, professors[cont], alAssig);
+            as=new Assignatura(rn.nextInt(20)+2000, "assig"+i, professors.get(cont), alAssig);
             assignatures[i]=as;
         }
         for (Assignatura assignature : assignatures) {
             System.out.println(assignature.toString());
             
         }
+        sortProffesor(professors);
 
     }
-
+    
+    public void sortProffesor(List<Professor> professors){
+        Collections.sort(professors,Professor.COMPARE_BY_NAME);
+        for (Professor professor : professors) {
+            System.out.println(professor.toString());        }
+        
+    }
     public static void main(String[] args) {
         ProjPPO p = new ProjPPO();
         p.creadorRndm();
